@@ -10,4 +10,5 @@ package uasprj.model;
  */
 public class Kursi {
     private int idKursi;
+    private int posisiKursi;
 }
