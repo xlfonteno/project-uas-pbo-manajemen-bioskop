@@ -13,7 +13,6 @@ import java.util.List;
 
 public class Transaksi {
     private int idTransaksi;
-    private Pelanggan pelanggan;
     private List<Tiket> listTiket = new ArrayList<>();
     private double totalBayar;
     private String tanggalTransaksi; // Bisa diganti Date/LocalDateTime jika mau
@@ -24,9 +23,7 @@ public class Transaksi {
     public int getIdTransaksi() { return idTransaksi; }
     public void setIdTransaksi(int idTransaksi) { this.idTransaksi = idTransaksi; }
 
-    public Pelanggan getPelanggan() { return pelanggan; }
-    public void setPelanggan(Pelanggan pelanggan) { this.pelanggan = pelanggan; }
-
+    
     public List<Tiket> getListTiket() { return listTiket; }
     public void setListTiket(List<Tiket> listTiket) { this.listTiket = listTiket; }
     

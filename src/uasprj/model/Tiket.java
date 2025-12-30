@@ -8,13 +8,13 @@ package uasprj.model;
  *
  * @author SomethingDelicious
  */
-public class Tiket {
+public abstract class Tiket {
     private int idTiket;
-    private Jadwal jadwal; // Relasi ke Jadwal
-    private Kursi kursi;   // Relasi ke Kursi
+    private Jadwal jadwal; 
+    private Kursi kursi;
     private double harga;
     private String status; // "BOOKED", "PAID", "CANCELLED"
-
+    
     public Tiket() {}
 
     public Tiket(int idTiket, Jadwal jadwal, Kursi kursi, double harga, String status) {
@@ -23,7 +23,7 @@ public class Tiket {
         this.kursi = kursi;
         this.harga = harga;
         this.status = status;
-    }
+}
 
     // Getters and Setters
     public int getIdTiket() { return idTiket; }

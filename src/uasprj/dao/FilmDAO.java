@@ -12,21 +12,43 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import uasprj.config.Database;
-import uasprj.model.Film;
+import uasprj.model.detFilm;
 
 public class FilmDAO {
     
-    public void addFilm(Film film) {
+    public boolean insert(Film film){
         String sql = "INSERT INTO film (judul, genre, durasi, rating) VALUES (?, ?, ?, ?)";
+        
+        try (Connection conn = Database.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, film.getJudul());
+            ps.setString(2, film.getGenre());
+            ps.setInt(3, film.getDurasi());
+            ps.setDouble(4, film.getRating());
+            ps.executeUpdate();
+
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean updateFilm(Film film) {
+        String sql = "UPDATE film SET judul=?, genre=?, durasi=?, rating=? WHERE id=?";
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, film.getJudul());
             stmt.setString(2, film.getGenre());
             stmt.setInt(3, film.getDurasi());
             stmt.setDouble(4, film.getRating());
+            stmt.setInt(5, film.getIdFilm());
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -52,5 +74,5 @@ public class FilmDAO {
         return listFilm;
     }
     
-    // Tambahkan method updateFilm dan deleteFilm jika perlu
+    
 }

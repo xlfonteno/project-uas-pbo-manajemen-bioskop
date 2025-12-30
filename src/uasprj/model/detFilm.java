@@ -8,19 +8,17 @@ package uasprj.model;
  *
  * @author SomethingDelicious
  */
-public abstract class Film {
+public class detFilm extends Film{
     private int idFilm;
-    private String judul;
     private String genre;
     private int durasi;
     private double rating;
-    private double harga;
     
-    public Film(){}
+    public detFilm(){}
     
-    public Film(int idFilm, String judul, String genre, int durasi, double  rating){
+    public detFilm(int idFilm, String judul, String genre, int durasi, double  rating){
         this.idFilm = idFilm;
-        this.judul = judul;
+        setJudul(judul);
         this.genre = genre;
         this.durasi = durasi;
         this.rating = rating;
@@ -70,11 +68,10 @@ public abstract class Film {
         this.rating = rating;
     }
 
-    public void getDetailFilm(){
+    public void tampilkanInfoFilm(){
         System.out.println("Judul: "+getJudul());
         System.out.println("Genre: "+getGenre());
         System.out.println("Durasi: "+getDurasi());
         System.out.println("Rating: "+getRating());
     }
-
 }
