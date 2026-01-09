@@ -8,30 +8,8 @@ package uasprj.model;
  *
  * @author SomethingDelicious
  */
-public class Kursi {
-    private int idKursi;
-    private String nomorKursi; // Contoh: "A1", "B5" (mengganti int posisiKursi agar lebih umum)
-    private int idStudio; // Foreign Key ke Studio
-    private boolean isTerisi;
-
-    public Kursi() {}
-
-    public Kursi(int idKursi, String nomorKursi, int idStudio, boolean isTerisi) {
-        this.idKursi = idKursi;
-        this.nomorKursi = nomorKursi;
-        this.idStudio = idStudio;
-        this.isTerisi = isTerisi;
-    }
-
-    public int getIdKursi() { return idKursi; }
-    public void setIdKursi(int idKursi) { this.idKursi = idKursi; }
-
-    public String getNomorKursi() { return nomorKursi; }
-    public void setNomorKursi(String nomorKursi) { this.nomorKursi = nomorKursi; }
-
-    public int getIdStudio() { return idStudio; }
-    public void setIdStudio(int idStudio) { this.idStudio = idStudio; }
-
-    public boolean isTerisi() { return isTerisi; }
-    public void setTerisi(boolean terisi) { isTerisi = terisi; }
+enum Kursi{
+    A1, A2, A3, A4, A5, B1, B2, B3, B4, B5, C1, C2, C3, C4, C5,
+    V1, V2, V3, V4, V5
+    
 }

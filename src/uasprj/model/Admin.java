@@ -20,5 +20,13 @@ public class Admin {
     public void SetUsn(String u){this.username = u;}
     public void SetPw(String pw){this.password = pw;}
     
+    public Admin(){}
+    
+    public Admin(int idAdmin, String username, String password){
+        this.idAdmin = idAdmin;
+        this.username = username;
+        this.password = password;
+    }
+    
     
 }

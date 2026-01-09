@@ -9,7 +9,6 @@ package uasprj.model;
  * @author SomethingDelicious
  */
 public class detFilm extends Film{
-    private int idFilm;
     private String genre;
     private int durasi;
     private double rating;
@@ -24,10 +23,6 @@ public class detFilm extends Film{
         this.rating = rating;
     }
     
-    public double getHargaFilm(){ return harga;}
-    
-    public void setHargaFilm(double harga){this.harga = harga;}
-
     public int getIdFilm() {
         return idFilm;
     }

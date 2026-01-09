@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import uasprj.config.Database;
-import uasprj.model.detFilm;
+import uasprj.model.Film;
 
 public class FilmDAO {
     
