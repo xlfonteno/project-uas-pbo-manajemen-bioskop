@@ -15,28 +15,11 @@ public class detFilm extends Film{
     
     public detFilm(){}
     
-    public detFilm(int idFilm, String judul, String genre, int durasi, double  rating){
-        this.idFilm = idFilm;
-        setJudul(judul);
+    public detFilm(int idFilm, String judul, double harga, String genre, int durasi, double rating){
+        super(idFilm, judul, harga);
         this.genre = genre;
         this.durasi = durasi;
         this.rating = rating;
-    }
-    
-    public int getIdFilm() {
-        return idFilm;
-    }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
-    public String getJudul() {
-        return judul;
-    }
-
-    public void setJudul(String judul) {
-        this.judul = judul;
     }
 
     public String getGenre() {
@@ -62,7 +45,7 @@ public class detFilm extends Film{
     public void setRating(double rating) {
         this.rating = rating;
     }
-
+    
     public void tampilkanInfoFilm(){
         System.out.println("Judul: "+getJudul());
         System.out.println("Genre: "+getGenre());

@@ -65,6 +65,10 @@ public class Jadwal {
         this.jamTayang = jamTayang;
     }
 
+    public double getHargaFilm(Film film){
+        return film.getHargaFilm();
+    }
+
     public void tampilkanJadwal(){
         System.out.println("Film: "+film.getJudul());
         System.out.println("Date: "+getTgl());

@@ -10,12 +10,14 @@ package uasprj.model;
  */
 import java.util.ArrayList;
 import java.util.List;
+import uasprj.util.DateUtil;
+import uasprj.util.HargaFormatter;
 
 public class Transaksi {
     private int idTransaksi;
     private List<Tiket> listTiket = new ArrayList<>();
     private double totalBayar;
-    private String tanggalTransaksi; // Bisa diganti Date/LocalDateTime jika mau
+    private String tanggalTransaksi = DateUtil.getCurrentDate(); // Bisa diganti Date/LocalDateTime jika mau
     private String metodePembayaran;
 
     public Transaksi() {}
@@ -26,6 +28,10 @@ public class Transaksi {
     
     public List<Tiket> getListTiket() { return listTiket; }
     public void setListTiket(List<Tiket> listTiket) { this.listTiket = listTiket; }
+
+    public void tampilkanListTiket(){
+        
+    }
     
     public void tambahTiket(Tiket tiket) {
         this.listTiket.add(tiket);
@@ -40,4 +46,14 @@ public class Transaksi {
 
     public String getMetodePembayaran() { return metodePembayaran; }
     public void setMetodePembayaran(String metodePembayaran) { this.metodePembayaran = metodePembayaran; }
+    
+    public String tampilkanTransaksi(){
+        return 
+        "============BoxxOne Receipt================"+
+        "\nId Transaksi: "+getIdTransaksi()+
+        "\nTanggal     : "+getTanggalTransaksi()+
+        "\nTiket       : \n"+getListTiket()+
+        "\nTotal Harga : "+HargaFormatter.formatRupiah(getTotalBayar())+
+        "\nMetode Bayar: "+getMetodePembayaran();
+    }
 }

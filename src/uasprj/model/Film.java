@@ -11,19 +11,13 @@ package uasprj.model;
 public class Film {
     protected int idFilm;
     protected String judul;
-    protected String genre;
-    protected int durasi;
-    protected double rating;
-    protected double hargaDasar;
+    private double hargaDasar;
     
     public Film(){}
     
-    public Film(int idFilm, String judul, String genre, int durasi, double  rating, double harga){
+    public Film(int idFilm, String judul, double harga){
         this.idFilm = idFilm;
         this.judul = judul;
-        this.genre = genre;
-        this.durasi = durasi;
-        this.rating = rating;
         this.hargaDasar = harga;
     }
     
@@ -47,35 +41,9 @@ public class Film {
         this.judul = judul;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getDurasi() {
-        return durasi;
-    }
-
-    public void setDurasi(int durasi) {
-        this.durasi = durasi;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
 
     public void getDetailFilm(){
         System.out.println("Judul: "+getJudul());
-        System.out.println("Genre: "+getGenre());
-        System.out.println("Durasi: "+getDurasi());
-        System.out.println("Rating: "+getRating());
         System.out.println("Harga Dasar: "+getHargaFilm());
     }
 

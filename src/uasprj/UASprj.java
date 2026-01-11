@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package uasprj;
-
+import uasprj.model.*;
 /**
  *
  * @author SomethingDelicious
@@ -15,6 +15,13 @@ public class UASprj {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Film moana = new detFilm(1, "Moana", 50000, "Cartoon", 9, 4.7);
+        Film zootopia2 = new detFilm(2, "Zootopia 2", 60000, "Cartoon", 155, 4.9);
+        Film comic8rev = new detFilm(3, "Comic 8 Revolution", 80000, "Action/Comedy", 200, 4.6);
+        Film janurireng = new detFilm(4, "Sewu Dino: Janur Ireng", 85000, "Horror", 185, 4.5);
+
+        
+        
     }
     
 }

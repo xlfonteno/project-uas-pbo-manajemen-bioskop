@@ -11,7 +11,7 @@ package uasprj.model;
 public class TiketReguler extends Film{
     public TiketReguler(){}
     
-    public void hitungTiket(){
-        setHargaFilm(50000);
+    public double hitungTiket(){
+        return getHargaFilm()+0;
     }
 }

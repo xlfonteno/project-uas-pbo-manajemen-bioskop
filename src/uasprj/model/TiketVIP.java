@@ -9,8 +9,8 @@ package uasprj.model;
  * @author SomethingDelicious
  */
 public class TiketVIP extends Film{
-    public void HitungHargaTiket(){
-        setHargaFilm(50000);
+    public double HitungHargaTiket(){
+        return getHargaFilm()+25000;
     }
 }
 

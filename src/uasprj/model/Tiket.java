@@ -8,7 +8,7 @@ package uasprj.model;
  *
  * @author SomethingDelicious
  */
-public abstract class Tiket {
+public abstract class Tiket extends Film{
     private int idTiket;
     private Jadwal jadwal; 
     private Kursi kursi;
@@ -21,7 +21,7 @@ public abstract class Tiket {
         this.idTiket = idTiket;
         this.jadwal = jadwal;
         this.kursi = kursi;
-        this.harga = harga;
+        this.harga = jadwal.getHargaFilm(jadwal.getFilm());
         this.booked = booked;
 }
 
