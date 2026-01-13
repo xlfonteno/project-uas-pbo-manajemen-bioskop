@@ -30,7 +30,7 @@ public class Transaksi {
     public void setListTiket(List<Tiket> listTiket) { this.listTiket = listTiket; }
 
     public void tampilkanListTiket(){
-        
+        for()
     }
     
     public void tambahTiket(Tiket tiket) {

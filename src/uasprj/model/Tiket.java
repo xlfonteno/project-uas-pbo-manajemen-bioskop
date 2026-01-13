@@ -8,7 +8,7 @@ package uasprj.model;
  *
  * @author SomethingDelicious
  */
-public abstract class Tiket extends Film{
+public class Tiket{
     private int idTiket;
     private Jadwal jadwal; 
     private Kursi kursi;
@@ -31,6 +31,18 @@ public abstract class Tiket extends Film{
     Kursi getKursi() { return kursi;}
     double getHarga() { return harga; }
     boolean getStatus() { return booked; }
+
+    public double hitungTiket(){
+        double total;
+        if(kursi != Kursi.V1 || kursi != Kursi.V2 || kursi != Kursi.V3 || kursi != Kursi.V4 || kursi != Kursi.V5){
+            total= harga+25000;
+        }
+        else{
+            total=harga+0;
+        }
+        
+        return total;
+    }
     
     
 }

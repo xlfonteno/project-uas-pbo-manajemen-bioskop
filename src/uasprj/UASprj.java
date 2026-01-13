@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package uasprj;
+import java.awt.geom.Arc2D;
 import uasprj.model.*;
 /**
  *
@@ -20,8 +21,10 @@ public class UASprj {
         Film comic8rev = new detFilm(3, "Comic 8 Revolution", 80000, "Action/Comedy", 200, 4.6);
         Film janurireng = new detFilm(4, "Sewu Dino: Janur Ireng", 85000, "Horror", 185, 4.5);
 
-        
-        
+        Studio studio1 = new Studio(1, "Studio 1", 20);
+        Jadwal jadwal1 = new Jadwal(1, janurireng, studio1, "29/01/2026", "16.30");
+
+        Tiket tiket1 = new TiketReguler(1, jadwal1, A2, 50000, true);
     }
     
 }

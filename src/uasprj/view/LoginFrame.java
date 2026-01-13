@@ -4,6 +4,8 @@
  */
 package uasprj.view;
 
+import javax.swing.JOptionPane;
+import uasprj.dao.AdminDAO;
 /**
  *
  * @author SomethingDelicious
@@ -15,6 +17,7 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        setLocationRelativeTo(null); // Menengahkan window saat dijalankan
     }
 
     /**

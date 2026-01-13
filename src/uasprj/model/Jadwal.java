@@ -14,15 +14,17 @@ public class Jadwal {
     private Studio studio;
     private String tanggal;
     private String jamTayang;
+    private HargaTiketHari hari;
 
     public Jadwal(){}
     
-    public Jadwal(int idJadwal, Film film, Studio studio, String tanggal, String jamTayang){
+    public Jadwal(int idJadwal, Film film, Studio studio, String tanggal, String jamTayang, HargaTiketHari hari){
         this.idJadwal = idJadwal;
         this.film = film;
         this.studio = studio;
         this.tanggal = tanggal;
         this.jamTayang = jamTayang;
+        this.hari = hari;
     }
 
     public int getIdJadwal() {
@@ -67,6 +69,10 @@ public class Jadwal {
 
     public double getHargaFilm(Film film){
         return film.getHargaFilm();
+    }
+
+    public double getHargaHari(HargaTiketHari hari){
+        return 
     }
 
     public void tampilkanJadwal(){
