@@ -24,7 +24,7 @@ public class UASprj {
         Studio studio1 = new Studio(1, "Studio 1", 20);
         Jadwal jadwal1 = new Jadwal(1, janurireng, studio1, "29/01/2026", "16.30");
 
-        Tiket tiket1 = new TiketReguler(1, jadwal1, A2, 50000, true);
+        Tiket tiket1 = new Tiket(1, jadwal1, Kursi.A2, 50000, true);
     }
     
 }

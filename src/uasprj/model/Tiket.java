@@ -26,11 +26,11 @@ public class Tiket{
 }
 
     // Getters and Setters
-    int getIdTiket() { return idTiket; }
-    Jadwal getJadwal() { return jadwal; }
-    Kursi getKursi() { return kursi;}
-    double getHarga() { return harga; }
-    boolean getStatus() { return booked; }
+    public int getIdTiket() { return idTiket; }
+    public Jadwal getJadwal() { return jadwal; }
+    public Kursi getKursi() { return kursi;}
+    public double getHarga() { return harga; }
+    public boolean getStatus() { return booked; }
 
     public double hitungTiket(){
         double total;

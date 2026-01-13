@@ -13,29 +13,40 @@ import java.util.ArrayList;
 import java.util.List;
 import uasprj.config.Database;
 import uasprj.model.Film;
+import uasprj.model.detFilm;
 
 public class FilmDAO {
     
     public boolean insert(Film film){
-        String sql = "INSERT INTO film (judul, genre, durasi, rating) VALUES (?, ?, ?, ?)";
+        // Tambahkan kolom harga di query jika di database ada kolom 'harga'
+        String sql = "INSERT INTO film (judul, genre, durasi, rating, harga) VALUES (?, ?, ?, ?, ?)";
         
         try (Connection conn = Database.getConnection();
-        PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
             ps.setString(1, film.getJudul());
-            ps.setString(2, film.getGenre());
-            ps.setInt(3, film.getDurasi());
-            ps.setDouble(4, film.getRating());
-            ps.executeUpdate();
 
+            if (film instanceof uasprj.model.detFilm) {
+                uasprj.model.detFilm df = (uasprj.model.detFilm) film;
+                ps.setString(2, df.getGenre());
+                ps.setInt(3, df.getDurasi());
+                ps.setDouble(4, df.getRating());
+            } else {
+                ps.setString(2, "-");
+                ps.setInt(3, 0);
+                ps.setDouble(4, 0.0);
+            }
+            
+            ps.setDouble(5, film.getHargaFilm());
+            ps.executeUpdate();
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
     
-    public boolean updateFilm(Film film) {
+    public boolean updateFilm(detFilm film) {
         String sql = "UPDATE film SET judul=?, genre=?, durasi=?, rating=? WHERE id=?";
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -59,9 +70,10 @@ public class FilmDAO {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Film f = new Film(
+                Film f = new detFilm(
                     rs.getInt("id_film"),
                     rs.getString("judul"),
+                    rs.getDouble("harga"),
                     rs.getString("genre"),
                     rs.getInt("durasi"),
                     rs.getDouble("rating")

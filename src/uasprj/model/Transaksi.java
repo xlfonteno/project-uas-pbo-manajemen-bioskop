@@ -30,7 +30,9 @@ public class Transaksi {
     public void setListTiket(List<Tiket> listTiket) { this.listTiket = listTiket; }
 
     public void tampilkanListTiket(){
-        for()
+        for(Tiket t : listTiket) {
+            System.out.println("Tiket: " + t.getIdTiket() + " - Harga: " + t.getHarga());
+        }
     }
     
     public void tambahTiket(Tiket tiket) {
