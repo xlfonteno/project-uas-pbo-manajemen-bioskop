@@ -58,6 +58,11 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pesanTiket1.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 650, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/janur_ireng_Jadwal.jpeg"))); // NOI18N
@@ -90,7 +95,17 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
         // Tutup frame saat ini
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BackToDashboardActionPerformed
-    }
+}
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    //menampilkan halaman
+    PemesananTiketForm pt = new PemesananTiketForm();
+    pt.setVisible(true);
+    //loacation
+    pt.setLocationRelativeTo(null);
+    //menutup frame
+    this.dispose();    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     /**
      * @param args the command line arguments
      */

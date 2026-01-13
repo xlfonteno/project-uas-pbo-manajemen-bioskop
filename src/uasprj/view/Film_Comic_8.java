@@ -5,6 +5,7 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.view.PemesananTiketForm;
 
 /**
  *
@@ -49,6 +50,11 @@ public class Film_Comic_8 extends javax.swing.JFrame {
 
         ButtonPesan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pesanTiket1.png"))); // NOI18N
         ButtonPesan.setBorder(null);
+        ButtonPesan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPesanActionPerformed(evt);
+            }
+        });
         jPanel1.add(ButtonPesan, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 650, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Comic_8_Jadwal.jpeg"))); // NOI18N
@@ -76,9 +82,19 @@ public class Film_Comic_8 extends javax.swing.JFrame {
         ds.setVisible(true);
 
         // Tutup frame saat ini
-        this.dispose();        // TODO add your handling code here:
+    }   this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BackToDashboardActionPerformed
-    }
+
+    private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
+//menampilkan halaman
+    PemesananTiketForm pt = new PemesananTiketForm();
+    pt.setVisible(true);
+    //loacation
+    pt.setLocationRelativeTo(null);
+    //menutup frame
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonPesanActionPerformed
+    
     /**
      * @param args the command line arguments
      */

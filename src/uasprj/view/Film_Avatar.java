@@ -87,7 +87,13 @@ public class Film_Avatar extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardActionPerformed
 }
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
-        // TODO add your handling code here:
+//menampilkan halaman
+    PemesananTiketForm pt = new PemesananTiketForm();
+    pt.setVisible(true);
+    //loacation
+    pt.setLocationRelativeTo(null);
+    //menutup frame
+    this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_ButtonPesanActionPerformed
     
     /**
