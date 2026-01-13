@@ -4,6 +4,14 @@
  */
 package uasprj.view;
 
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import uasprj.model.*;
+import uasprj.util.HargaFormatter;
+
 /**
  *
  * @author SomethingDelicious
@@ -13,8 +21,59 @@ public class PemesananTiketForm extends javax.swing.JFrame {
     /**
      * Creates new form Pembayaran
      */
-    public PemesananTiketForm() {
+    private Film filmTerpilih;
+    private Jadwal jadwalTerpilih;   
+    private List<Kursi> listKursi = new ArrayList<>(); 
+    
+    private final double HARGA_WEEKDAY = 35000;
+    private final double HARGA_WEEKEND = 45000;
+    private final double HARGA_VIP     = 60000;
+
+    /**
+     * 
+     */
+    public PemesananTiketForm(Film film) {
         initComponents();
+        this.filmTerpilih = film;
+        
+        // Setup awal
+        lblJudulFilm.setText(film.getJudul()); 
+        rbWeekday.setSelected(true); 
+        updateTotalHarga(); // Reset angka jadi 0
+    }
+    
+    public PemesananTiketForm() { initComponents(); }
+    
+    private void handleKlikKursi(java.awt.event.ItemEvent evt, Kursi kursi) {
+        // Cek apakah dicentang atau di-uncheck
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            listKursi.add(kursi);
+        } else {
+            listKursi.remove(kursi);
+        }
+        // Hitung ulang total harga real-time
+        updateTotalHarga(); 
+    }
+
+    /**
+     * Menghitung total harga berdasarkan Hari + Jenis Kursi
+     */
+    private void updateTotalHarga() {
+        double total = 0;
+        double hargaDasar = rbWeekend.isSelected() ? HARGA_WEEKEND : HARGA_WEEKDAY;
+
+        for (Kursi k : listKursi) {
+            // Cek apakah kursi ini VIP? (V1, V2, dst)
+            if (k.toString().startsWith("V")) {
+                total += HARGA_VIP; 
+            } else {
+                total += hargaDasar;
+            }
+        }
+
+        // Update Label di Layar
+        lblQty1.setText(String.valueOf(listKursi.size())); // Label Jumlah Tiket
+        lblTotal.setText(HargaFormatter.formatRupiah(total)); // Label Total Harga
     }
 
     /**
@@ -39,7 +98,7 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         rbWeekend = new javax.swing.JRadioButton();
         rbWeekday = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblQty1 = new javax.swing.JLabel();
         confirm = new javax.swing.JToggleButton();
         lblTotal = new javax.swing.JLabel();
         chkA1 = new javax.swing.JCheckBox();
@@ -62,6 +121,7 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         chkVIP3 = new javax.swing.JCheckBox();
         chkVIP4 = new javax.swing.JCheckBox();
         chkVIP5 = new javax.swing.JCheckBox();
+        lblJudulFilm = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblQty = new javax.swing.JLabel();
 
@@ -112,52 +172,177 @@ public class PemesananTiketForm extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("0");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, 20));
+        lblQty1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblQty1.setText("0");
+        getContentPane().add(lblQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, 20));
 
         confirm.setBackground(new java.awt.Color(102, 51, 0));
         confirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/confirm.png"))); // NOI18N
         confirm.setBorder(null);
+        confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmActionPerformed(evt);
+            }
+        });
         getContentPane().add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 150, -1));
 
         lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTotal.setText("0");
         getContentPane().add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 30, -1));
+
+        chkA1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkA1ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, 20));
 
         chkA2.setForeground(new java.awt.Color(255, 255, 255));
+        chkA2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkA2ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkA2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+
+        chkA3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkA3ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkA3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
+        chkA4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkA4ItemStateChanged(evt);
+            }
+        });
         chkA4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkA4ActionPerformed(evt);
             }
         });
         getContentPane().add(chkA4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
+
+        chkA5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkA5ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkA5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+
+        chkB1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkB1ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
+        chkB2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkB2ItemStateChanged(evt);
+            }
+        });
         chkB2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkB2ActionPerformed(evt);
             }
         });
         getContentPane().add(chkB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, -1));
+
+        chkB3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkB3ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+
+        chkB4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkB4ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkB4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        chkB5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkB5ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkB5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
+
+        chkC1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkC1ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
+
+        chkC2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkC2ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
+
+        chkC3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkC3ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+
+        chkC4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkC4ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkC4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+
+        chkC5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkC5ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkC5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
-        getContentPane().add(chkVIP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
-        getContentPane().add(chkVIP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, -1, -1));
+
+        chkVIP1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkVIP1ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(chkVIP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, -1));
+
+        chkVIP2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkVIP2ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(chkVIP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
+
+        chkVIP3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkVIP3ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkVIP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, -1, -1));
+
+        chkVIP4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkVIP4ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkVIP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, -1, -1));
+
+        chkVIP5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkVIP5ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(chkVIP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
+
+        lblJudulFilm.setText("judulFlm");
+        getContentPane().add(lblJudulFilm, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 80, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-13 at 16.10.57.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -176,10 +361,12 @@ public class PemesananTiketForm extends javax.swing.JFrame {
 
     private void rbWeekendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbWeekendActionPerformed
         // TODO add your handling code here:
+        updateTotalHarga();
     }//GEN-LAST:event_rbWeekendActionPerformed
 
     private void rbWeekdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbWeekdayActionPerformed
         // TODO add your handling code here:
+        updateTotalHarga();
     }//GEN-LAST:event_rbWeekdayActionPerformed
 
     private void chkA4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkA4ActionPerformed
@@ -189,6 +376,146 @@ public class PemesananTiketForm extends javax.swing.JFrame {
     private void chkB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkB2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkB2ActionPerformed
+
+    private void chkA1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkA1ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.A1);
+    }//GEN-LAST:event_chkA1ItemStateChanged
+
+    private void chkA2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkA2ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.A2);
+    }//GEN-LAST:event_chkA2ItemStateChanged
+
+    private void chkA3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkA3ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.A3);
+    }//GEN-LAST:event_chkA3ItemStateChanged
+
+    private void chkA4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkA4ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.A4);
+    }//GEN-LAST:event_chkA4ItemStateChanged
+
+    private void chkA5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkA5ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.A5);
+    }//GEN-LAST:event_chkA5ItemStateChanged
+
+    private void chkB1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkB1ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.B1);
+    }//GEN-LAST:event_chkB1ItemStateChanged
+
+    private void chkB2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkB2ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.B2);
+    }//GEN-LAST:event_chkB2ItemStateChanged
+
+    private void chkB3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkB3ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.B3);
+    }//GEN-LAST:event_chkB3ItemStateChanged
+
+    private void chkB4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkB4ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.B4);
+    }//GEN-LAST:event_chkB4ItemStateChanged
+
+    private void chkB5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkB5ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.B5);
+    }//GEN-LAST:event_chkB5ItemStateChanged
+
+    private void chkC1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkC1ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.C1);
+    }//GEN-LAST:event_chkC1ItemStateChanged
+
+    private void chkC2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkC2ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.C2);
+    }//GEN-LAST:event_chkC2ItemStateChanged
+
+    private void chkC3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkC3ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.C3);
+    }//GEN-LAST:event_chkC3ItemStateChanged
+
+    private void chkC4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkC4ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.C4);
+    }//GEN-LAST:event_chkC4ItemStateChanged
+
+    private void chkC5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkC5ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.C5);
+    }//GEN-LAST:event_chkC5ItemStateChanged
+
+    private void chkVIP1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkVIP1ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.V1);
+    }//GEN-LAST:event_chkVIP1ItemStateChanged
+
+    private void chkVIP2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkVIP2ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.V2);
+    }//GEN-LAST:event_chkVIP2ItemStateChanged
+
+    private void chkVIP3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkVIP3ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.V3);
+    }//GEN-LAST:event_chkVIP3ItemStateChanged
+
+    private void chkVIP4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkVIP4ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.V4);
+    }//GEN-LAST:event_chkVIP4ItemStateChanged
+
+    private void chkVIP5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkVIP5ItemStateChanged
+        // TODO add your handling code here:
+        handleKlikKursi(evt, uasprj.model.Kursi.V5);
+    }//GEN-LAST:event_chkVIP5ItemStateChanged
+
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
+        // TODO add your handling code here:
+        if (listKursi.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Pilih minimal 1 kursi!");
+        return;
+    }
+
+    // 1. Buat Jadwal Sementara (Simulasi)
+    Jadwal jadwalFix = new Jadwal();
+    jadwalFix.setFilm(this.filmTerpilih);
+    // Ambil jam dari combobox/list jadwal kamu
+    jadwalFix.setJamTayang(cbJadwal.getSelectedItem().toString()); 
+    jadwalFix.setTgl(rbWeekday.isSelected() ? "Weekday" : "Weekend");
+
+    // 2. Siapkan Transaksi
+    Transaksi tr = new Transaksi();
+    
+    // Harga dasar untuk transaksi ini
+    double hargaDasar = rbWeekend.isSelected() ? HARGA_WEEKEND : HARGA_WEEKDAY;
+
+    for (Kursi k : listKursi) {
+        // Buat Tiket
+        Tiket t = new Tiket();
+        t.setJadwal(jadwalFix); //
+        t.setKursi(k);
+        t.setBooked(true);
+        
+        // SET HARGA MANUAL (Agar sesuai perhitungan di layar)
+        double hargaFinal = k.toString().startsWith("V") ? HARGA_VIP : hargaDasar;
+        t.setHarga(hargaFinal); // Pastikan kamu menambahkan setter ini di Tiket.java!
+        
+        tr.tambahTiket(t); //
+    }
+
+    // 3. Pindah ke Halaman Pembayaran
+    Pembayaran formBayar = new Pembayaran(tr); // Lempar data transaksi
+    formBayar.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_confirmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,10 +585,11 @@ public class PemesananTiketForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkVIP5;
     private javax.swing.JToggleButton confirm;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblJudulFilm;
     private javax.swing.JLabel lblQty;
+    private javax.swing.JLabel lblQty1;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JRadioButton rbWeekday;
     private javax.swing.JRadioButton rbWeekend;

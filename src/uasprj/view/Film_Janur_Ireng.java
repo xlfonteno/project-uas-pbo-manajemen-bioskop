@@ -5,6 +5,8 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.model.Film;
+import uasprj.model.detFilm;
 
 /**
  *
@@ -97,8 +99,10 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardActionPerformed
 }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    //menampilkan halaman
-    PemesananTiketForm pt = new PemesananTiketForm();
+//Set Film
+    Film film = new detFilm(4, "Sewu Dino: Janur Ireng", 85000, "Horror", 185, 4.5);    
+//menampilkan halaman
+    PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);
     //loacation
     pt.setLocationRelativeTo(null);

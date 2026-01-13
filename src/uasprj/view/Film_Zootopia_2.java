@@ -5,6 +5,8 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.model.Film;
+import uasprj.model.detFilm;
 import uasprj.view.Dashboard;
 
 /**
@@ -86,8 +88,10 @@ public class Film_Zootopia_2 extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardActionPerformed
     }
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
+//Set Film
+    Film film = new detFilm(3, "Zootopia 2", 60000, "Cartoon, Comedy", 225, 4.9);
 //menampilkan halaman
-    PemesananTiketForm pt = new PemesananTiketForm();
+    PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);
     //loacation
     pt.setLocationRelativeTo(null);

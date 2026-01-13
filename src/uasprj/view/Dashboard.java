@@ -93,7 +93,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         getContentPane().add(BackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-09 at 20.19.43.jpeg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Dasboard.jpeg"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 

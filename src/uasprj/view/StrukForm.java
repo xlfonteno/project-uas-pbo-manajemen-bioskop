@@ -4,6 +4,9 @@
  */
 package uasprj.view;
 
+import uasprj.model.Tiket;
+import uasprj.model.Transaksi;
+import uasprj.util.HargaFormatter;
 /**
  *
  * @author SomethingDelicious
@@ -16,6 +19,42 @@ public class StrukForm extends javax.swing.JFrame {
     public StrukForm() {
         initComponents();
     }
+    public StrukForm(Transaksi tr, double uangBayar, double kembalian) {
+        initComponents();
+        tampilkanStruk(tr, uangBayar, kembalian);
+    }
+    
+    private void tampilkanStruk(Transaksi tr, double bayar, double kembali) {
+        StringBuilder sb = new StringBuilder();
+        
+        // Header Struk
+        sb.append("================================\n");
+        sb.append("       BIOSKOP XX1 PROJECT      \n");
+        sb.append("================================\n");
+        sb.append("No Transaksi : ").append(tr.getIdTransaksi()).append("\n"); // ID ini didapat setelah save DB di form sebelumnya
+        sb.append("Tanggal      : ").append(tr.getTanggalTransaksi()).append("\n");
+        sb.append("--------------------------------\n");
+        
+        // Detail Tiket (Looping)
+        // Pastikan Tiket.java punya method tampilkanTiket() atau getter yang sesuai
+        for (Tiket t : tr.getListTiket()) {
+            sb.append(t.getJadwal().getFilm().getJudul()).append("\n"); // Judul Film
+            sb.append("  ").append(t.getKursi()).append(" ").append(t.getJadwal().getJamTayang());
+            sb.append("   ").append(HargaFormatter.formatRupiah(t.getHarga())).append("\n");
+        }
+        
+        sb.append("--------------------------------\n");
+        sb.append("Total Tagihan : ").append(HargaFormatter.formatRupiah(tr.getTotalBayar())).append("\n");
+        sb.append("Tunai         : ").append(HargaFormatter.formatRupiah(bayar)).append("\n");
+        sb.append("Kembali       : ").append(HargaFormatter.formatRupiah(kembali)).append("\n");
+        sb.append("================================\n");
+        sb.append("      TERIMA KASIH KAKA!        \n");
+        sb.append("================================\n");
+
+        // Tampilkan ke TextArea
+        txtAreaStruk.setText(sb.toString());
+        txtAreaStruk.setEditable(false); // Biar user gabisa edit teks struk
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,31 +65,41 @@ public class StrukForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaStruk = new javax.swing.JTextArea();
+        btnSelesai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(268, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
-        );
+        txtAreaStruk.setColumns(20);
+        txtAreaStruk.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        txtAreaStruk.setRows(5);
+        jScrollPane1.setViewportView(txtAreaStruk);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 380, 500));
+
+        btnSelesai.setText("Close");
+        btnSelesai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelesaiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSelesai, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelesaiActionPerformed
+        // TODO add your handling code here:
+        new Dashboard().setVisible(true); // Pastikan Dashboard.java ada
+        this.dispose();
+    }//GEN-LAST:event_btnSelesaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +137,9 @@ public class StrukForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnSelesai;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtAreaStruk;
     // End of variables declaration//GEN-END:variables
 }

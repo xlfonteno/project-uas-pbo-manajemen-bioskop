@@ -5,6 +5,8 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.model.Film;
+import uasprj.model.detFilm;
 
 /**
  *
@@ -90,8 +92,10 @@ public class Film_agak_lain extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardActionPerformed
 
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
- //menampilkan halaman
-    PemesananTiketForm pt = new PemesananTiketForm();
+//Set Film
+    Film film = new detFilm(5, "Agak Laen: Menyala Pantiku!", 85000, "Horror, Comedy", 195, 4.8);
+//menampilkan halaman
+    PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);
     //loacation
     pt.setLocationRelativeTo(null);

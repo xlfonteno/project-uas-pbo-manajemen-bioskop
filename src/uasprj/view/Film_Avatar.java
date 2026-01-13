@@ -5,6 +5,8 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.model.Film;
+import uasprj.model.detFilm;
 import uasprj.view.Dashboard;
 
 /**
@@ -87,8 +89,11 @@ public class Film_Avatar extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardActionPerformed
 }
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
+
+//Set Film dipilih
+    Film film = new detFilm(4, "Avatar: Fire and Ash", 85000, "Action, Sci-Fi", 185, 4.5);
 //menampilkan halaman
-    PemesananTiketForm pt = new PemesananTiketForm();
+    PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);
     //loacation
     pt.setLocationRelativeTo(null);

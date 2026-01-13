@@ -29,10 +29,12 @@ public class Transaksi {
     public List<Tiket> getListTiket() { return listTiket; }
     public void setListTiket(List<Tiket> listTiket) { this.listTiket = listTiket; }
 
-    public void tampilkanListTiket(){
+    public String tampilkanListTiket(){
         for(Tiket t : listTiket) {
             System.out.println("Tiket: " + t.getIdTiket() + " - Harga: " + t.getHarga());
         }
+        
+        return null;
     }
     
     public void tambahTiket(Tiket tiket) {
@@ -49,13 +51,23 @@ public class Transaksi {
     public String getMetodePembayaran() { return metodePembayaran; }
     public void setMetodePembayaran(String metodePembayaran) { this.metodePembayaran = metodePembayaran; }
     
-    public String tampilkanTransaksi(){
+    public String tampilkanTransaksi() {
+        StringBuilder sbTiket = new StringBuilder();
+        
+        // Loop manual agar tampilan rapi
+        for (Tiket t : listTiket) {
+            sbTiket.append("- ").append(t.tampilkanTiket()).append("\n");
+        }
+
         return 
         "============BoxxOne Receipt================"+
-        "\nId Transaksi: "+getIdTransaksi()+
-        "\nTanggal     : "+getTanggalTransaksi()+
-        "\nTiket       : \n"+getListTiket()+
-        "\nTotal Harga : "+HargaFormatter.formatRupiah(getTotalBayar())+
-        "\nMetode Bayar: "+getMetodePembayaran();
+        "\nId Transaksi: " + idTransaksi +
+        "\nTanggal     : " + tanggalTransaksi +
+        "\n-------------------------------------------"+
+        "\nDetail Tiket: \n" + sbTiket.toString() +
+        "-------------------------------------------"+
+        "\nTotal Harga : " + HargaFormatter.formatRupiah(totalBayar) +
+        "\nMetode Bayar: " + metodePembayaran +
+        "\n===========================================";
     }
 }
