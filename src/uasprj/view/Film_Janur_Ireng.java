@@ -83,7 +83,7 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
 // Konfirmasi dengan JOptionPane
     int confirm = JOptionPane.showConfirmDialog(
             this,
-            "Apakah Anda yakin ingin kembali ke Login?",
+            "Apakah Anda yakin ingin kembali ke Dashboard?",
             "Konfirmasi",
             JOptionPane.YES_NO_OPTION
     );

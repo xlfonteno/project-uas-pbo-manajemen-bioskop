@@ -5,6 +5,8 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.model.Film;
+import uasprj.model.detFilm;
 
 /**
  *
@@ -35,6 +37,7 @@ public class Dashboard extends javax.swing.JFrame {
         Zootopia_2_Dashboard = new javax.swing.JButton();
         Janur_Ireng_Dashboard = new javax.swing.JButton();
         BackToLogin = new javax.swing.JButton();
+        tambahFilm = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -92,6 +95,16 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 40));
+
+        tambahFilm.setBackground(new java.awt.Color(153, 102, 0));
+        tambahFilm.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        tambahFilm.setText("Tambah Film");
+        tambahFilm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahFilmActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tambahFilm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Dasboard.jpeg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -171,6 +184,16 @@ public class Dashboard extends javax.swing.JFrame {
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_Zootopia_2_DashboardActionPerformed
 
+    private void tambahFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahFilmActionPerformed
+
+    AddFilm ad = new AddFilm();
+    ad.setVisible(true);
+    //loacation
+    ad.setLocationRelativeTo(null);
+    //menutup frame
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_tambahFilmActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,5 +238,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton Zootopia_2_Dashboard;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton tambahFilm;
     // End of variables declaration//GEN-END:variables
 }

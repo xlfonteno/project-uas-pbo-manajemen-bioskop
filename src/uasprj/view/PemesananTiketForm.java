@@ -123,6 +123,7 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         chkVIP5 = new javax.swing.JCheckBox();
         lblJudulFilm = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
         lblQty = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -348,6 +349,15 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 360, 40));
 
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/backbutton3.png"))); // NOI18N
+        BackButton.setBorder(null);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 40));
+
         lblQty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Transaksi.jpeg"))); // NOI18N
         lblQty.setText("jLabel1");
         getContentPane().add(lblQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 540));
@@ -517,6 +527,26 @@ public class PemesananTiketForm extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_confirmActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+// Konfirmasi dengan JOptionPane
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Apakah Anda yakin ingin kembali ke Dashboard ?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        // Buka Dashboard
+        Dashboard ds = new Dashboard();
+        ds.setLocationRelativeTo(null);
+        ds.setVisible(true);
+
+        // Tutup frame saat ini
+        this.dispose();
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_BackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -554,6 +584,7 @@ public class PemesananTiketForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
