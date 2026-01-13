@@ -4,6 +4,9 @@
  */
 package uasprj.view;
 
+import javax.swing.JOptionPane;
+import uasprj.view.Dashboard;
+
 /**
  *
  * @author Zandatsu
@@ -27,32 +30,66 @@ public class Film_Avatar extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        BackToDashboard = new javax.swing.JButton();
+        ButtonPesan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BackToDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/backbutton3.png"))); // NOI18N
+        BackToDashboard.setBorder(null);
+        BackToDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDashboardActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BackToDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 40));
+
+        ButtonPesan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pesanTiket1.png"))); // NOI18N
+        ButtonPesan.setText("jButton1");
+        ButtonPesan.setBorder(null);
+        ButtonPesan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPesanActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ButtonPesan, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 650, 260, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Avatar_Jadwal.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 50, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 1270, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
+// Konfirmasi dengan JOptionPane
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Apakah Anda yakin ingin kembali ke Login?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        // Buka Dashboard
+        Dashboard ds = new Dashboard();
+        ds.setLocationRelativeTo(null);
+        ds.setVisible(true);
+
+        // Tutup frame saat ini
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_BackToDashboardActionPerformed
+}
+    private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonPesanActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -89,6 +126,8 @@ public class Film_Avatar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboard;
+    private javax.swing.JButton ButtonPesan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

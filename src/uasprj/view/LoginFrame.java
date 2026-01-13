@@ -29,21 +29,69 @@ public class LoginFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        Button_Login = new javax.swing.JButton();
+        input_username = new javax.swing.JTextField();
+        input_password = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Button_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login_icon.jpeg"))); // NOI18N
+        Button_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_LoginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Button_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 80, 30));
+        jPanel1.add(input_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 90, -1));
+        jPanel1.add(input_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 90, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-13 at 16.10.57.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 110, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login page.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 960, 540));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Button_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_LoginActionPerformed
+ // Ambil input dari textfield
+    String username = input_username.getText();
+    String password = new String(input_password.getPassword());
+
+    // Panggil AdminDao untuk validasi
+    AdminDAO dao = new AdminDAO();
+    boolean loginValid = dao.checkLogin(username, password);
+
+    if (loginValid) {
+        // Jika login benar → tampilkan Dashboard
+        Dashboard ds = new Dashboard();
+        ds.setVisible(true);
+        ds.setLocationRelativeTo(null);
+
+        // Tutup frame login
+        this.dispose();
+    } else {
+        // Jika login salah → tampilkan notifikasi
+        JOptionPane.showMessageDialog(
+            this,
+            "Username atau Password salah!",
+            "Login Gagal",
+            JOptionPane.ERROR_MESSAGE
+        );
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_LoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +129,11 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_Login;
+    private javax.swing.JPasswordField input_password;
+    private javax.swing.JTextField input_username;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

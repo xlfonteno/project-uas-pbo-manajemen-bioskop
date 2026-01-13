@@ -6,6 +6,7 @@ package uasprj;
 import java.awt.geom.Arc2D;
 import uasprj.model.*;
 import uasprj.view.Dashboard;
+import uasprj.view.LoginFrame;
 /**
  *
  * @author SomethingDelicious
@@ -27,9 +28,9 @@ public class UASprj {
 
         Tiket tiket1 = new Tiket(1, jadwal1, Kursi.A2, 50000, true);
         
-        Dashboard ds = new Dashboard();
-        ds.setLocationRelativeTo(null);
-        ds.setVisible(true);
+        LoginFrame lg = new LoginFrame();
+        lg.setLocationRelativeTo(null);
+        lg.setVisible(true);
     }
     
 }

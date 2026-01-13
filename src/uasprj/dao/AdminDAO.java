@@ -38,4 +38,13 @@ public class AdminDAO {
         
         return false;
     }
-}
+
+    public boolean checkLogin(String username, String password) {
+        if ("admin".equals(username) && "12345".equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    }
+

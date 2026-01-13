@@ -4,6 +4,8 @@
  */
 package uasprj.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SomethingDelicious
@@ -32,6 +34,7 @@ public class Dashboard extends javax.swing.JFrame {
         Comic_8_Dashboard = new javax.swing.JButton();
         Zootopia_2_Dashboard = new javax.swing.JButton();
         Janur_Ireng_Dashboard = new javax.swing.JButton();
+        BackToLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -58,9 +61,19 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(Agak_Laen_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 180, 310));
 
         Comic_8_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/comic8.png"))); // NOI18N
+        Comic_8_Dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Comic_8_DashboardActionPerformed(evt);
+            }
+        });
         getContentPane().add(Comic_8_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 180, 310));
 
         Zootopia_2_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/zootopia.png"))); // NOI18N
+        Zootopia_2_Dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Zootopia_2_DashboardActionPerformed(evt);
+            }
+        });
         getContentPane().add(Zootopia_2_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 250, 180, 310));
 
         Janur_Ireng_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/janurireng.png"))); // NOI18N
@@ -71,6 +84,15 @@ public class Dashboard extends javax.swing.JFrame {
         });
         getContentPane().add(Janur_Ireng_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 180, 310));
 
+        BackToLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/backbutton3.png"))); // NOI18N
+        BackToLogin.setBorder(null);
+        BackToLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 40));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-09 at 20.19.43.jpeg"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -80,24 +102,74 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void Avatar_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Avatar_DashboardActionPerformed
     //menampilkan halaman
-    new Film_Avatar().setVisible(true);
+    Film_Avatar fa = new Film_Avatar();
+    fa.setVisible(true);
+    //loacation
+    fa.setLocationRelativeTo(null);
     //menutup frame
     this.dispose();
     }//GEN-LAST:event_Avatar_DashboardActionPerformed
 
     private void Agak_Laen_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agak_Laen_DashboardActionPerformed
      // menampilkan halaman
-    new Film_agak_lain().setVisible(true);
+    Film_agak_lain al = new Film_agak_lain();
+    al.setVisible(true);
+    //location
+    al.setLocationRelativeTo(null);
     //menutup frame
     this.dispose();
     }//GEN-LAST:event_Agak_Laen_DashboardActionPerformed
 
     private void Janur_Ireng_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Janur_Ireng_DashboardActionPerformed
-    //menampilkan halaman
-    new Film_Janur_Ireng().setVisible(true);
+     // menampilkan halaman
+    Film_Janur_Ireng ji = new Film_Janur_Ireng();
+    ji.setVisible(true);
+    //location
+    ji.setLocationRelativeTo(null);
     //menutup frame
     this.dispose();
     }//GEN-LAST:event_Janur_Ireng_DashboardActionPerformed
+
+    private void BackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToLoginActionPerformed
+     // Konfirmasi dengan JOptionPane
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Apakah Anda yakin ingin kembali ke Login?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        // Buka LoginFrame
+        LoginFrame login = new LoginFrame();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+
+        // Tutup frame saat ini
+        this.dispose();
+    }
+   // TODO add your handling code here:
+    }//GEN-LAST:event_BackToLoginActionPerformed
+
+    private void Comic_8_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Comic_8_DashboardActionPerformed
+//menampilkan halaman
+    Film_Comic_8 c8 = new Film_Comic_8();
+    c8.setVisible(true);
+    //loacation
+    c8.setLocationRelativeTo(null);
+    //menutup frame
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_Comic_8_DashboardActionPerformed
+
+    private void Zootopia_2_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zootopia_2_DashboardActionPerformed
+//menampilkan halaman
+    Film_Zootopia_2 zt = new Film_Zootopia_2();
+    zt.setVisible(true);
+    //loacation
+    zt.setLocationRelativeTo(null);
+    //menutup frame
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_Zootopia_2_DashboardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +209,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agak_Laen_Dashboard;
     private javax.swing.JButton Avatar_Dashboard;
+    private javax.swing.JButton BackToLogin;
     private javax.swing.JButton Comic_8_Dashboard;
     private javax.swing.JButton Janur_Ireng_Dashboard;
     private javax.swing.JButton Zootopia_2_Dashboard;

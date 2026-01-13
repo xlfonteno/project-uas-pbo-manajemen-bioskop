@@ -4,6 +4,8 @@
  */
 package uasprj.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Zandatsu
@@ -26,35 +28,69 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        BackToDashboard = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/janur_ireng_Jadwal.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 707, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
-        );
+        jCheckBox1.setText("jCheckBox1");
+        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1414, 158, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        BackToDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/backbutton3.png"))); // NOI18N
+        BackToDashboard.setBorder(null);
+        BackToDashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDashboardActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BackToDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 40));
+
+        jButton2.setText("jButton2");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pesanTiket1.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 650, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/janur_ireng_Jadwal.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1280, -1));
+
+        jButton3.setText("jButton3");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 370, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
+// Konfirmasi dengan JOptionPane
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Apakah Anda yakin ingin kembali ke Login?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        // Buka Dashboard
+        Dashboard ds = new Dashboard();
+        ds.setLocationRelativeTo(null);
+        ds.setVisible(true);
+
+        // Tutup frame saat ini
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_BackToDashboardActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -91,7 +127,12 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton BackToDashboard;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,17 +5,18 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import uasprj.view.Dashboard;
 
 /**
  *
  * @author Zandatsu
  */
-public class Film_agak_lain extends javax.swing.JFrame {
+public class Film_Zootopia_2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Film_agak_lain
+     * Creates new form Film_Zootopia_2
      */
-    public Film_agak_lain() {
+    public Film_Zootopia_2() {
         initComponents();
     }
 
@@ -29,7 +30,6 @@ public class Film_agak_lain extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        user = new javax.swing.JLabel();
         BackToDashboard = new javax.swing.JButton();
         ButtonPesan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -39,9 +39,6 @@ public class Film_agak_lain extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-13 at 16.10.57.jpeg"))); // NOI18N
-        jPanel1.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, 100, 50));
-
         BackToDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/backbutton3.png"))); // NOI18N
         BackToDashboard.setBorder(null);
         BackToDashboard.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +46,7 @@ public class Film_agak_lain extends javax.swing.JFrame {
                 BackToDashboardActionPerformed(evt);
             }
         });
-        jPanel1.add(BackToDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
+        jPanel1.add(BackToDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 50));
 
         ButtonPesan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pesanTiket1.png"))); // NOI18N
         ButtonPesan.setBorder(null);
@@ -58,19 +55,19 @@ public class Film_agak_lain extends javax.swing.JFrame {
                 ButtonPesanActionPerformed(evt);
             }
         });
-        jPanel1.add(ButtonPesan, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 630, 270, -1));
+        jPanel1.add(ButtonPesan, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 640, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agak_lain_Jadwal.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Zootopia_2_Jadwal.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 700));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 1280, 710));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 700));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1300, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
-    // Konfirmasi dengan JOptionPane
+// Konfirmasi dengan JOptionPane
     int confirm = JOptionPane.showConfirmDialog(
             this,
             "Apakah Anda yakin ingin kembali ke Login?",
@@ -85,10 +82,9 @@ public class Film_agak_lain extends javax.swing.JFrame {
         ds.setVisible(true);
 
         // Tutup frame saat ini
-        this.dispose();
-    }        // TODO add your handling code here:
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BackToDashboardActionPerformed
-
+    }
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonPesanActionPerformed
@@ -110,20 +106,20 @@ public class Film_agak_lain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Film_agak_lain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Film_Zootopia_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Film_agak_lain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Film_Zootopia_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Film_agak_lain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Film_Zootopia_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Film_agak_lain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Film_Zootopia_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Film_agak_lain().setVisible(true);
+                new Film_Zootopia_2().setVisible(true);
             }
         });
     }
@@ -133,6 +129,5 @@ public class Film_agak_lain extends javax.swing.JFrame {
     private javax.swing.JButton ButtonPesan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }
