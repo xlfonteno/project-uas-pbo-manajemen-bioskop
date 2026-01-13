@@ -27,35 +27,77 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Avatar_Dashboard = new javax.swing.JButton();
+        Agak_Laen_Dashboard = new javax.swing.JButton();
+        Comic_8_Dashboard = new javax.swing.JButton();
+        Zootopia_2_Dashboard = new javax.swing.JButton();
+        Janur_Ireng_Dashboard = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        Avatar_Dashboard.setForeground(new java.awt.Color(255, 255, 255));
+        Avatar_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/avatar.png"))); // NOI18N
+        Avatar_Dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Avatar_DashboardActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Avatar_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 180, 310));
+
+        Agak_Laen_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agaklaen.png"))); // NOI18N
+        Agak_Laen_Dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Agak_Laen_DashboardActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Agak_Laen_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 180, 310));
+
+        Comic_8_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/comic8.png"))); // NOI18N
+        getContentPane().add(Comic_8_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 180, 310));
+
+        Zootopia_2_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/zootopia.png"))); // NOI18N
+        getContentPane().add(Zootopia_2_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 250, 180, 310));
+
+        Janur_Ireng_Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/janurireng.png"))); // NOI18N
+        Janur_Ireng_Dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Janur_Ireng_DashboardActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Janur_Ireng_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 180, 310));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-09 at 20.19.43.jpeg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Avatar_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Avatar_DashboardActionPerformed
+    //menampilkan halaman
+    new Film_Avatar().setVisible(true);
+    //menutup frame
+    this.dispose();
+    }//GEN-LAST:event_Avatar_DashboardActionPerformed
+
+    private void Agak_Laen_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Agak_Laen_DashboardActionPerformed
+     // menampilkan halaman
+    new Film_agak_lain().setVisible(true);
+    //menutup frame
+    this.dispose();
+    }//GEN-LAST:event_Agak_Laen_DashboardActionPerformed
+
+    private void Janur_Ireng_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Janur_Ireng_DashboardActionPerformed
+    //menampilkan halaman
+    new Film_Janur_Ireng().setVisible(true);
+    //menutup frame
+    this.dispose();
+    }//GEN-LAST:event_Janur_Ireng_DashboardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +135,12 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agak_Laen_Dashboard;
+    private javax.swing.JButton Avatar_Dashboard;
+    private javax.swing.JButton Comic_8_Dashboard;
+    private javax.swing.JButton Janur_Ireng_Dashboard;
+    private javax.swing.JButton Zootopia_2_Dashboard;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

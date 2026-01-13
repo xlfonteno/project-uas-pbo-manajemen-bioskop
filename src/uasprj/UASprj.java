@@ -5,6 +5,7 @@
 package uasprj;
 import java.awt.geom.Arc2D;
 import uasprj.model.*;
+import uasprj.view.Dashboard;
 /**
  *
  * @author SomethingDelicious
@@ -25,6 +26,10 @@ public class UASprj {
         Jadwal jadwal1 = new Jadwal(1, janurireng, studio1, "29/01/2026", "16.30");
 
         Tiket tiket1 = new Tiket(1, jadwal1, Kursi.A2, 50000, true);
+        
+        Dashboard ds = new Dashboard();
+        ds.setLocationRelativeTo(null);
+        ds.setVisible(true);
     }
     
 }
