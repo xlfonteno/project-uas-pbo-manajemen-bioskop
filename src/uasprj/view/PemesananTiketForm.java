@@ -174,8 +174,9 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, -1));
 
         lblQty1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblQty1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQty1.setText("0");
-        getContentPane().add(lblQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, 20));
+        getContentPane().add(lblQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 180, 20));
 
         confirm.setBackground(new java.awt.Color(102, 51, 0));
         confirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/confirm.png"))); // NOI18N
@@ -188,8 +189,9 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         getContentPane().add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 150, -1));
 
         lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotal.setText("0");
-        getContentPane().add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 30, -1));
+        getContentPane().add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 190, -1));
 
         chkA1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -343,7 +345,7 @@ public class PemesananTiketForm extends javax.swing.JFrame {
         getContentPane().add(chkVIP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
 
         lblJudulFilm.setText("judulFlm");
-        getContentPane().add(lblJudulFilm, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 80, -1));
+        getContentPane().add(lblJudulFilm, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 290, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/WhatsApp Image 2026-01-13 at 16.10.57.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");

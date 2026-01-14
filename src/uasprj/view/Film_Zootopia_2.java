@@ -89,7 +89,7 @@ public class Film_Zootopia_2 extends javax.swing.JFrame {
     }
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
 //Set Film
-    Film film = new detFilm(3, "Zootopia 2", 60000, "Cartoon, Comedy", 225, 4.9);
+    Film film = new detFilm(3, "Zootopia 2", "Cartoon, Comedy", 225, 4.9, 60000);
 //menampilkan halaman
     PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);

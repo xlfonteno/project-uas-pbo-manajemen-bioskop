@@ -73,10 +73,10 @@ public class FilmDAO {
                 Film f = new detFilm(
                     rs.getInt("id_film"),
                     rs.getString("judul"),
-                    rs.getDouble("harga"),
                     rs.getString("genre"),
                     rs.getInt("durasi"),
-                    rs.getDouble("rating")
+                    rs.getDouble("rating"),
+                    rs.getDouble("harga")
                 );
                 listFilm.add(f);
             }

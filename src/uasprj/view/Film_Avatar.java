@@ -91,7 +91,7 @@ public class Film_Avatar extends javax.swing.JFrame {
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
 
 //Set Film dipilih
-    Film film = new detFilm(4, "Avatar: Fire and Ash", 85000, "Action, Sci-Fi", 185, 4.5);
+    Film film = new detFilm(4, "Avatar: Fire and Ash", "Action, Sci-Fi", 185, 4.5, 85000);
 //menampilkan halaman
     PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);

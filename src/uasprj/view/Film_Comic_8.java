@@ -88,7 +88,7 @@ public class Film_Comic_8 extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardActionPerformed
 
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
-Film film = new detFilm(2, "Comic 8: Revolution Santet K4binet", 70000, "Action, Comedy", 225, 4.7);
+Film film = new detFilm(2, "Comic 8: Revolution Santet K4binet", "Action, Comedy", 225, 4.7, 70000);
 //menampilkan halaman
     PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);

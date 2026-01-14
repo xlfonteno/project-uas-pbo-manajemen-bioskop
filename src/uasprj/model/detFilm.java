@@ -15,7 +15,7 @@ public class detFilm extends Film{
     
     public detFilm(){}
     
-    public detFilm(int idFilm, String judul, double harga, String genre, int durasi, double rating){
+    public detFilm(int idFilm, String judul,  String genre, int durasi, double rating, double harga){
         super(idFilm, judul, harga);
         this.genre = genre;
         this.durasi = durasi;

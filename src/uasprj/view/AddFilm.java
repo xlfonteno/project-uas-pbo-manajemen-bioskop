@@ -5,6 +5,10 @@
 package uasprj.view;
 
 import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
+import java.io.File;
+import uasprj.model.*;
+import uasprj.dao.FilmDAO;
 
 /**
  *
@@ -63,10 +67,20 @@ public class AddFilm extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/sAVE.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 110, 30));
 
         clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cLEAR.png"))); // NOI18N
         clearButton.setBorder(null);
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 110, 30));
 
         saveButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -100,6 +114,73 @@ public class AddFilm extends javax.swing.JFrame {
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_BackButtonActionPerformed
     }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String idStr = tfId.getText();
+        String judul = tfJudul.getText();
+        String genre = tfGenre.getText();
+        String durasiStr = tfDurasi.getText();
+        String ratingStr = tfRating.getText();
+        String hargaStr = tfHarga.getText();
+        
+        if (judul.isEmpty() || genre.isEmpty() || durasiStr.isEmpty() || hargaStr.isEmpty()|| idStr.isEmpty() || ratingStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mohon lengkapi semua data!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try {
+            double harga = Double.parseDouble(hargaStr);
+            int durasi = Integer.parseInt(durasiStr);
+            int id = Integer.parseInt(idStr);
+            double rating = Double.parseDouble(ratingStr);
+
+            // 3. Buat Object Film
+            detFilm filmBaru = new detFilm();
+            filmBaru.setIdFilm(id);
+            filmBaru.setJudul(judul);
+            filmBaru.setGenre(genre);
+            filmBaru.setDurasi(durasi);
+            filmBaru.setRating(rating);
+            filmBaru.setHargaFilm(harga);
+            
+            FilmDAO dao = new FilmDAO();
+            boolean sukses = dao.insert(filmBaru);
+            
+            if (sukses) {
+                JOptionPane.showMessageDialog(this, "Data Film Berhasil Disimpan!");
+                // Reset form
+                tfId.setText("");
+                tfJudul.setText("");
+                tfGenre.setText("");
+                tfDurasi.setText("");
+                tfRating.setText("");
+                tfHarga.setText("");
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan data.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Harga harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage());
+        }
+        
+        
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        // TODO add your handling code here:
+        tfId.setText("");
+        tfJudul.setText("");
+        tfGenre.setText("");
+        tfDurasi.setText("");
+        tfRating.setText("");
+        tfHarga.setText("");
+    }//GEN-LAST:event_clearButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */

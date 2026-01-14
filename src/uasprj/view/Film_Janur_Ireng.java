@@ -100,7 +100,7 @@ public class Film_Janur_Ireng extends javax.swing.JFrame {
 }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //Set Film
-    Film film = new detFilm(4, "Sewu Dino: Janur Ireng", 85000, "Horror", 185, 4.5);    
+    Film film = new detFilm(4, "Sewu Dino: Janur Ireng", "Horror", 185, 4.5, 85000);    
 //menampilkan halaman
     PemesananTiketForm pt = new PemesananTiketForm(film);
     pt.setVisible(true);
