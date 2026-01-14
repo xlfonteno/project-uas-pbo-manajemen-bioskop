@@ -43,7 +43,6 @@ public class AddFilm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         saveButton = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,9 +85,6 @@ public class AddFilm extends javax.swing.JFrame {
         saveButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/AddFilm.png"))); // NOI18N
         jPanel1.add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
-
-        jButton3.setText("jButton3");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 520));
 
@@ -220,7 +216,6 @@ public class AddFilm extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel saveButton;
     private javax.swing.JTextField tfDurasi;
